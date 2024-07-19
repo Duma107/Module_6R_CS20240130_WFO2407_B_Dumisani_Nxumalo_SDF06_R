@@ -1,23 +1,228 @@
-/* Base Styles */
-
-:root {
-    font-size: 10px;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
+/* Global Styles */
 body {
-    font-family: "Open Sans", Arial, sans-serif;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     background-color: #fafafa;
-    color: #262626;
-    padding-bottom: 3rem;
 }
 
-img {
-    display: block;
+.container {
+    width: 90%;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.header, .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+/* Profile Section */
+.profile {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.profile-image {
+    margin-right: 20px;
+}
+
+.profile-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 200%;
+    border: 10px solid #317e5d;
+    object-fit: cover;
+}
+
+.profile-info {
+    flex: 5;
+}
+
+.profile-user-settings {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-user-name {
+    font-size: 26px;
+    font-weight: 70;
+    margin-right: 50px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: rgba(2, 2, 2, 0.771);
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn:hover, .btn:focus {
+    background-color: #f7f7f7;
+}
+
+.profile-stats {
+    display: flex;
+    margin-bottom: 10px;
+    margin: 25px;
+}
+
+.profile-stats ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-stats li {
+    margin-right: 30px;
+}
+
+.profile-stat-count {
+    font-weight: 600;
+}
+
+.profile-bio {
+    margin-top: 10px;
+}
+
+.profile-real-name {
+    font-weight: 600;
+}
+
+/* Gallery Section */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.gallery-item {
+    position: relative;
+    cursor: pointer;
+}
+.gallery-item-type {
+    color: #dbdbdb;
+    position: absolute;
+    z-index: 2;
+}
+.block1 {
+    left: 90%;
+    top: 1%;
+}
+.gallery-image {
+    width: 98%;
+    height: 98%;
+    object-fit: cover;
+    border-radius: none;
+    position: relative;
+}
+
+.gallery-item-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 98%;
+    height: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 5px;
+}
+
+.gallery-item:hover .gallery-item-info {
+    opacity: 1;
+}
+
+.gallery-item-info ul {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.gallery-item-likes, .gallery-item-comments {
+    display: flex;
+    align-items: center;
+}
+
+.gallery-item-likes i, .gallery-item-comments i {
+    margin-right: 5px;
+}
+
+/* Loader */
+.loader {
+    margin: 50px auto;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 200px) {
+    .profile {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-user-settings {
+        flex-direction: column;
+    }
+
+    .profile-stats {
+        justify-content: center;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-user-name {
+        font-size: 22px;
+    }
+
+    .btn {
+        padding: 3px 7px;
+        font-size: 12px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
 }
